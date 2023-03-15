@@ -1,12 +1,11 @@
 public class Example {
     public static void main(String[] args) {
-        int intNumber;
         double doubleNumber;
 
-        intNumber = 3 / 4;
-        doubleNumber = 3 / 4;
+        doubleNumber = 3 / (double)4;
+        System.out.println(doubleNumber);
 
-        System.out.println(intNumber);
+        doubleNumber = 3. / 4;
         System.out.println(doubleNumber);
     }
 }
