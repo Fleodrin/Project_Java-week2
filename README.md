@@ -1,2 +1,2 @@
 # Project homework for the GNU 
-object-oriented programming course.
+객체지향프로그래밍(001분반)
