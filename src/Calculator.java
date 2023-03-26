@@ -7,6 +7,7 @@ public class Calculator {
         int first, second;
         String operator;
 
+        //Defining scanners and read inputs
         Scanner firstValue = new Scanner(System.in);
         System.out.print("First value: ");
         first = firstValue.nextInt();
@@ -19,6 +20,7 @@ public class Calculator {
         System.out.print("Operator: ");
         operator = operatorString.nextLine();
 
+        //Use switch case for multiple actions
         switch(operator) {
             case "+":
                 System.out.print(first + second);
@@ -27,6 +29,7 @@ public class Calculator {
                 System.out.print(first - second);
                 break;
             case "/":
+                //Check for a "0" division
                 if (second == 0) {
                     System.out.print("Division by zero!");
                 } else {
@@ -36,6 +39,7 @@ public class Calculator {
             case "*":
                 System.out.print(first * second);
                 break;
+            //Don't forget to use the default statement
             default :
                 System.out.print("Something went wrong, try use a different operator");;
         }
