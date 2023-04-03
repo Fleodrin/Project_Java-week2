@@ -21,7 +21,7 @@ public class Calculator {
         operator = operatorString.nextLine();
 
         //Use switch case for multiple actions
-        switch(operator) {
+        switch (operator) {
             case "+":
                 System.out.print(first + second);
                 break;
@@ -40,8 +40,8 @@ public class Calculator {
                 System.out.print(first * second);
                 break;
             //Don't forget to use the default statement
-            default :
-                System.out.print("Something went wrong, try use a different operator");;
+            default:
+                System.out.print("Something went wrong, try use a different operator");
         }
     }
 }
