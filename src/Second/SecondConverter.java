@@ -1,3 +1,5 @@
+package Second;
+
 class SecondConverter {
     public static void main(String[] args) {
         int s1, s2, m, h, d;

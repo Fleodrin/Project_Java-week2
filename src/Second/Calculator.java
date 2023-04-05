@@ -1,3 +1,4 @@
+package Second;
 //Import scanner
 
 import java.util.Scanner;
