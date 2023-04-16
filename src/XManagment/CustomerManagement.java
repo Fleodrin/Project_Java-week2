@@ -10,9 +10,9 @@ public class CustomerManagement {
 
         while (num != 5) {
             System.out.println("*** Customer Management System Menu ***");
-            System.out.println(" 1. Add Customers");
-            System.out.println(" 2. Delete Customers");
-            System.out.println(" 3. Edit Customers");
+            System.out.println(" 1. Add Customer");
+            System.out.println(" 2. Delete Customer");
+            System.out.println(" 3. Edit Customer");
             System.out.println(" 4. View Customers");
             System.out.println(" 5. Exit");
             System.out.println("Select one number between 1 - 5:");
@@ -25,7 +25,7 @@ public class CustomerManagement {
             } else if (num == 3) {
                 customerManager.editCustomer();
             } else if (num == 4) {
-                customerManager.viewCustomer();
+                customerManager.viewCustomers();
             } else {
                 continue;
             }
