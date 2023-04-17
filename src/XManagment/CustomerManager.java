@@ -83,8 +83,6 @@ public class CustomerManager {
     }
 
     public void viewCustomers() {
-//        System.out.print("Customer ID:");
-//        int customerId = input.nextInt();
         for (int i = 0; i < customers.size(); i++) {
             customers.get(i).printInfo();
         }
