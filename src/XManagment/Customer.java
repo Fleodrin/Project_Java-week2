@@ -1,10 +1,11 @@
 package XManagment;
 
 public class Customer {
-    String name;
-    int id;
-    String email;
-    String phone;
+    protected CustomerKind kind = CustomerKind.DepartmentStore;
+    protected String name;
+    protected int id;
+    protected String email;
+    protected String phone;
 
     public Customer() {
     }
