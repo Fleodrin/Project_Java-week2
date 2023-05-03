@@ -1,4 +1,4 @@
-package XManagment;
+package Customer;
 
 public enum CustomerKind {
     FoodStore,

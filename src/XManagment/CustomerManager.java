@@ -1,5 +1,8 @@
 package XManagment;
 
+import Customer.Customer;
+import Customer.FoodStoreCustomer;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,16 +15,27 @@ public class CustomerManager {
     }
 
     public void addCustomer() {
-        Customer customer = new Customer();
-        System.out.print("Customer ID:");
-        customer.id = input.nextInt();
-        System.out.print("Customer name:");
-        customer.name = input.next();
-        System.out.print("Email address:");
-        customer.email = input.next();
-        System.out.print("Phone number:");
-        customer.phone = input.next();
-        customers.add(customer);
+        int kind = 0;
+        Customer customer;
+        while (kind != 1 && kind != 2) {
+            System.out.print("1 for FoodStore");
+            System.out.print("2 for ElectronicStore");
+            System.out.print("Select num for Customer Kind between 1 and 2:");
+            kind = input.nextInt();
+            if (kind == 1) {
+                customer = new Customer();
+                customer.getUserInput(input);
+                customers.add(customer);
+                break;
+            } else if (kind == 2) {
+                customer = new FoodStoreCustomer();
+                customer.getUserInput(input);
+                customers.add(customer);
+                break;
+            } else {
+                System.out.println("Select num for Customer Kind between 1 and 2:");
+            }
+        }
     }
 
     public void deleteCustomer() {
@@ -29,7 +43,7 @@ public class CustomerManager {
         int customerId = input.nextInt();
         int index = -1;
         for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).id == customerId) {
+            if (customers.get(i).getId() == customerId) {
                 index = i;
                 break;
             }
@@ -49,7 +63,7 @@ public class CustomerManager {
         int customerId = input.nextInt();
         for (int i = 0; i < customers.size(); i++) {
             Customer customer = customers.get(i);
-            if (customer.id == customerId) {
+            if (customer.getId() == customerId) {
                 int num = -1;
                 while (num != 5) {
                     System.out.println("** Customer Info Edit Menu **");
@@ -63,16 +77,20 @@ public class CustomerManager {
 
                     if (num == 1) {
                         System.out.println("Customer Id");
-                        customer.id = input.nextInt();
+                        int id = input.nextInt();
+                        customer.setId(id);
                     } else if (num == 2) {
                         System.out.println("Customer name");
-                        customer.name = input.next();
+                        String name = input.next();
+                        customer.setName(name);
                     } else if (num == 3) {
                         System.out.println("Email address");
-                        customer.email = input.next();
+                        String email = input.next();
+                        customer.setEmail(email);
                     } else if (num == 4) {
                         System.out.println("Phone number");
-                        customer.phone = input.next();
+                        String phone = input.next();
+                        customer.setPhone(phone);
                     } else {
                         continue;
                     } // if
