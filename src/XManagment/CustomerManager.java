@@ -19,7 +19,7 @@ public class CustomerManager {
     public void addCustomer() {
         int kind = 0;
         Customer customer;
-        while (kind != 1 && kind != 2) {
+        while (kind != 1 && kind != 2 && kind != 3) {
             System.out.print("1 for DepartmentStore\n");
             System.out.print("2 for FoodStore\n");
             System.out.print("3 for ElectronicStore\n");
