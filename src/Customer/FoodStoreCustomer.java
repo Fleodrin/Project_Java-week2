@@ -3,6 +3,10 @@ package Customer;
 import java.util.Scanner;
 
 public class FoodStoreCustomer extends Customer {
+
+    public FoodStoreCustomer(CustomerKind kind) {
+        super(kind);
+    }
     public void getUserInput(Scanner input) {
         System.out.print("Customer ID:");
         int id = input.nextInt();

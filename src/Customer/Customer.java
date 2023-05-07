@@ -12,12 +12,24 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(CustomerKind kind) {
+        this.kind = kind;
+    }
+
     public Customer(String name, int id) {
         this.name = name;
         this.id = id;
     }
 
     public Customer(String name, int id, String email, String phone) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public Customer(CustomerKind kind, String name, int id, String email, String phone) {
+        this.kind = kind;
         this.name = name;
         this.id = id;
         this.email = email;
@@ -65,7 +77,23 @@ public class Customer {
     }
 
     public void printInfo() {
-        System.out.println("name:" + name + " id:" + id + " email:" + email + " phone:" + phone);
+        String skind = "none";
+        switch (this.kind) {
+            case DepartmentStore:
+                skind = "Dep. Store";
+                break;
+            case FoodStore:
+                skind = "Food Store";
+                break;
+            case ElectronicStore:
+                skind = "EStore";
+                break;
+            case ConvenientStore:
+                skind = "Conv. Store";
+                break;
+            default:
+        }
+        System.out.println("kind:" + skind + " name:" + name + " id:" + id + " email:" + email + " phone:" + phone);
     }
 
     public void getUserInput(Scanner input) {

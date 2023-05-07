@@ -2,6 +2,8 @@ package XManagment;
 
 import Customer.Customer;
 import Customer.FoodStoreCustomer;
+import Customer.ElectronicStoreCustomer;
+import Customer.CustomerKind;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,22 +20,28 @@ public class CustomerManager {
         int kind = 0;
         Customer customer;
         while (kind != 1 && kind != 2) {
-            System.out.print("1 for FoodStore");
-            System.out.print("2 for ElectronicStore");
-            System.out.print("Select num for Customer Kind between 1 and 2:");
+            System.out.print("1 for DepartmentStore\n");
+            System.out.print("2 for FoodStore\n");
+            System.out.print("3 for ElectronicStore\n");
+            System.out.print("Select num 1, 2, 3 for Customer Kind:");
             kind = input.nextInt();
             if (kind == 1) {
-                customer = new Customer();
+                customer = new Customer(CustomerKind.DepartmentStore);
                 customer.getUserInput(input);
                 customers.add(customer);
                 break;
             } else if (kind == 2) {
-                customer = new FoodStoreCustomer();
+                customer = new FoodStoreCustomer(CustomerKind.FoodStore);
+                customer.getUserInput(input);
+                customers.add(customer);
+                break;
+            } else if (kind == 3) {
+                customer = new ElectronicStoreCustomer(CustomerKind.ElectronicStore);
                 customer.getUserInput(input);
                 customers.add(customer);
                 break;
             } else {
-                System.out.println("Select num for Customer Kind between 1 and 2:");
+                System.out.println("Select num 1, 2, 3 for Customer Kind:");
             }
         }
     }
