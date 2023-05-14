@@ -3,13 +3,15 @@ package XManagment;
 import Customer.Customer;
 import Customer.FoodStoreCustomer;
 import Customer.ElectronicStoreCustomer;
+import Customer.DepartmentStoreCustomer;
 import Customer.CustomerKind;
+import Customer.CustomerInput;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CustomerManager {
-    ArrayList<Customer> customers = new ArrayList<Customer>();
+    ArrayList<CustomerInput> customers = new ArrayList<CustomerInput>();
     Scanner input;
 
     CustomerManager(Scanner input) {
@@ -18,7 +20,7 @@ public class CustomerManager {
 
     public void addCustomer() {
         int kind = 0;
-        Customer customer;
+        CustomerInput customerInput;
         while (kind != 1 && kind != 2 && kind != 3) {
             System.out.print("1 for DepartmentStore\n");
             System.out.print("2 for FoodStore\n");
@@ -26,19 +28,19 @@ public class CustomerManager {
             System.out.print("Select num 1, 2, 3 for Customer Kind:");
             kind = input.nextInt();
             if (kind == 1) {
-                customer = new Customer(CustomerKind.DepartmentStore);
-                customer.getUserInput(input);
-                customers.add(customer);
+                customerInput = new DepartmentStoreCustomer(CustomerKind.DepartmentStore);
+                customerInput.getUserInput(input);
+                customers.add(customerInput);
                 break;
             } else if (kind == 2) {
-                customer = new FoodStoreCustomer(CustomerKind.FoodStore);
-                customer.getUserInput(input);
-                customers.add(customer);
+                customerInput = new FoodStoreCustomer(CustomerKind.FoodStore);
+                customerInput.getUserInput(input);
+                customers.add(customerInput);
                 break;
             } else if (kind == 3) {
-                customer = new ElectronicStoreCustomer(CustomerKind.ElectronicStore);
-                customer.getUserInput(input);
-                customers.add(customer);
+                customerInput = new ElectronicStoreCustomer(CustomerKind.ElectronicStore);
+                customerInput.getUserInput(input);
+                customers.add(customerInput);
                 break;
             } else {
                 System.out.println("Select num 1, 2, 3 for Customer Kind:");
@@ -70,8 +72,8 @@ public class CustomerManager {
         System.out.print("Customer ID:");
         int customerId = input.nextInt();
         for (int i = 0; i < customers.size(); i++) {
-            Customer customer = customers.get(i);
-            if (customer.getId() == customerId) {
+            CustomerInput customerInput = customers.get(i);
+            if (customerInput.getId() == customerId) {
                 int num = -1;
                 while (num != 5) {
                     System.out.println("** Customer Info Edit Menu **");
@@ -86,19 +88,19 @@ public class CustomerManager {
                     if (num == 1) {
                         System.out.println("Customer Id");
                         int id = input.nextInt();
-                        customer.setId(id);
+                        customerInput.setId(id);
                     } else if (num == 2) {
                         System.out.println("Customer name");
                         String name = input.next();
-                        customer.setName(name);
+                        customerInput.setName(name);
                     } else if (num == 3) {
                         System.out.println("Email address");
                         String email = input.next();
-                        customer.setEmail(email);
+                        customerInput.setEmail(email);
                     } else if (num == 4) {
                         System.out.println("Phone number");
                         String phone = input.next();
-                        customer.setPhone(phone);
+                        customerInput.setPhone(phone);
                     } else {
                         continue;
                     } // if

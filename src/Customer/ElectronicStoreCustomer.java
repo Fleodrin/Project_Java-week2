@@ -2,7 +2,7 @@ package Customer;
 
 import java.util.Scanner;
 
-public class ElectronicStoreCustomer extends Customer {
+public class ElectronicStoreCustomer extends Customer implements CustomerInput {
 
     protected String securedEmail;
 
@@ -66,19 +66,19 @@ public class ElectronicStoreCustomer extends Customer {
         String skind = "none";
         switch (this.kind) {
             case DepartmentStore:
-                skind = "Dep. Store";
+                skind = "Dep.Store";
                 break;
             case FoodStore:
-                skind = "Food Store";
+                skind = "FoodStore";
                 break;
             case ElectronicStore:
                 skind = "EStore";
                 break;
             case ConvenientStore:
-                skind = "Conv. Store";
+                skind = "Conv.Store";
                 break;
             default:
         }
-        System.out.println("kind:" + skind + " name:" + name + " id:" + id + " email:" + email + " Secured email:" + securedEmail + " phone:" + phone);
+        System.out.println("kind:" + skind + " name:" + name + " id:" + id + " email:" + email + " phone:" + phone);
     }
 }
