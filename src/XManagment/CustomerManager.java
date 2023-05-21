@@ -7,6 +7,7 @@ import Customer.CustomerKind;
 import Customer.CustomerInput;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CustomerManager {
@@ -20,29 +21,37 @@ public class CustomerManager {
     public void addCustomer() {
         int kind = 0;
         CustomerInput customerInput;
-        while (kind != 1 && kind != 2 && kind != 3) {
-            System.out.print("1 for DepartmentStore\n");
-            System.out.print("2 for FoodStore\n");
-            System.out.print("3 for ElectronicStore\n");
-            System.out.print("Select num 1, 2, 3 for Customer Kind:");
-            kind = input.nextInt();
-            if (kind == 1) {
-                customerInput = new DepartmentStoreCustomer(CustomerKind.DepartmentStore);
-                customerInput.getUserInput(input);
-                customers.add(customerInput);
-                break;
-            } else if (kind == 2) {
-                customerInput = new FoodStoreCustomer(CustomerKind.FoodStore);
-                customerInput.getUserInput(input);
-                customers.add(customerInput);
-                break;
-            } else if (kind == 3) {
-                customerInput = new ElectronicStoreCustomer(CustomerKind.ElectronicStore);
-                customerInput.getUserInput(input);
-                customers.add(customerInput);
-                break;
-            } else {
-                System.out.println("Select num 1, 2, 3 for Customer Kind:");
+        while (kind < 1 || kind > 3) {
+            try {
+                System.out.print("1 for DepartmentStore\n");
+                System.out.print("2 for FoodStore\n");
+                System.out.print("3 for ElectronicStore\n");
+                System.out.print("Select num 1, 2, 3 for Customer Kind:");
+                kind = input.nextInt();
+                if (kind == 1) {
+                    customerInput = new DepartmentStoreCustomer(CustomerKind.DepartmentStore);
+                    customerInput.getUserInput(input);
+                    customers.add(customerInput);
+                    break;
+                } else if (kind == 2) {
+                    customerInput = new FoodStoreCustomer(CustomerKind.FoodStore);
+                    customerInput.getUserInput(input);
+                    customers.add(customerInput);
+                    break;
+                } else if (kind == 3) {
+                    customerInput = new ElectronicStoreCustomer(CustomerKind.ElectronicStore);
+                    customerInput.getUserInput(input);
+                    customers.add(customerInput);
+                    break;
+                } else {
+                    System.out.println("Select num 1, 2, 3 for Customer Kind:");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Please put an integer between 1 and 3!");
+                if (input.hasNext()) {
+                    input.next();
+                }
+                kind = -1;
             }
         }
     }
@@ -68,10 +77,10 @@ public class CustomerManager {
     public int removeFromCustomers(int index, int customerId) {
         if (index >= 0) {
             customers.remove(index);
-            System.out.println("The student " + customerId + " was deleted");
+            System.out.println("The customer " + customerId + " was deleted");
             return 1;
         } else {
-            System.out.println("The student has not been registered");
+            System.out.println("The customer has not been registered");
             return -1;
         }
     }
@@ -113,7 +122,6 @@ public class CustomerManager {
             customers.get(i).printInfo();
         }
     }
-
 
 
     public void showEditMenu() {

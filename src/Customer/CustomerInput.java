@@ -1,6 +1,7 @@
 package Customer;
 
 import java.util.Scanner;
+import Exception.EmailFormatException;
 
 public interface CustomerInput {
     public void setName(String name);
@@ -9,7 +10,7 @@ public interface CustomerInput {
 
     public void setId(int id);
 
-    public void setEmail(String email);
+    public void setEmail(String email) throws EmailFormatException;
 
     public void setPhone(String phone);
 

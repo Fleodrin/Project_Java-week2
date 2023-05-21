@@ -1,6 +1,7 @@
 package Customer;
 
 import java.util.Scanner;
+import Exception.EmailFormatException;
 
 public class ElectronicStoreCustomer extends ConvenienceStoreCustomer {
 
@@ -25,13 +26,17 @@ public class ElectronicStoreCustomer extends ConvenienceStoreCustomer {
             answer = input.next().charAt(0);
             answer = Character.toUpperCase(answer);
 
-            if (answer == 'Y') {
-                setCustomerEmail(input);
-                break;
-            } else if (answer == 'N') {
-                this.setEmail("");
-                break;
-            } else {
+            try {
+                if (answer == 'Y') {
+                    setCustomerEmail(input);
+                    break;
+                } else if (answer == 'N') {
+                    this.setEmail("");
+                    break;
+                } else {
+                }
+            } catch (EmailFormatException e) {
+                System.out.println("Incorrect Email Format. Put the e-mail adress that contains @");
             }
         }
     }

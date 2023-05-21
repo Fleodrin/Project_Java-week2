@@ -2,7 +2,9 @@ package Customer;
 
 import java.util.Scanner;
 
-public abstract class ConvenienceStoreCustomer extends  Customer{
+import Exception.EmailFormatException;
+
+public abstract class ConvenienceStoreCustomer extends Customer {
 
     public ConvenienceStoreCustomer(CustomerKind kind) {
         super(kind);
@@ -22,15 +24,19 @@ public abstract class ConvenienceStoreCustomer extends  Customer{
             answer = input.next().charAt(0);
             answer = Character.toUpperCase(answer);
 
-            if (answer == 'Y') {
-                System.out.print("Email address:");
-                String email = input.next();
-                this.setEmail(email);
-                break;
-            } else if (answer == 'N') {
-                this.setEmail("");
-                break;
-            } else {
+            try {
+                if (answer == 'Y') {
+                    System.out.print("Email address:");
+                    String email = input.next();
+                    this.setEmail(email);
+                    break;
+                } else if (answer == 'N') {
+                    this.setEmail("");
+                    break;
+                } else {
+                }
+            } catch (EmailFormatException e) {
+                System.out.println("Incorrect Email Format. Put the e-mail adress that contains @");
             }
         }
     }

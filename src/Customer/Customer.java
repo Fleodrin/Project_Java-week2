@@ -2,6 +2,8 @@ package Customer;
 
 import java.util.Scanner;
 
+import Exception.EmailFormatException;
+
 public abstract class Customer implements CustomerInput {
     protected CustomerKind kind = CustomerKind.DepartmentStore;
     protected String name;
@@ -64,7 +66,11 @@ public abstract class Customer implements CustomerInput {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws EmailFormatException {
+        if (!email.contains("@") && !email.equals("")) {
+            throw new EmailFormatException();
+        }
+
         this.email = email;
     }
 
@@ -91,9 +97,16 @@ public abstract class Customer implements CustomerInput {
     }
 
     public void setCustomerEmail(Scanner input) {
-        System.out.println("Email address:");
-        String email = input.next();
-        this.setEmail(email);
+        String email = "";
+        while (!email.contains("@")) {
+            System.out.println("Email address:");
+            email = input.next();
+            try {
+                this.setEmail(email);
+            } catch (EmailFormatException e) {
+                System.out.println("Incorrect Email Format. Put the e-mail adress that contains @");
+            }
+        }
     }
 
     public void setCustomerPhone(Scanner input) {
