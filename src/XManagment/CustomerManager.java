@@ -51,6 +51,11 @@ public class CustomerManager {
     public void deleteCustomer() {
         System.out.print("Customer ID:");
         int customerId = input.nextInt();
+        int index = findIndex(customerId);
+        removeFromCustomers(index, customerId);
+    }
+
+    public int findIndex(int customerId) {
         int index = -1;
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getId() == customerId) {
@@ -58,13 +63,17 @@ public class CustomerManager {
                 break;
             }
         }
+        return index;
+    }
 
+    public int removeFromCustomers(int index, int customerId) {
         if (index >= 0) {
             customers.remove(index);
             System.out.println("The student " + customerId + " was deleted");
+            return 1;
         } else {
             System.out.println("The student has not been registered");
-            return;
+            return -1;
         }
     }
 
@@ -72,38 +81,28 @@ public class CustomerManager {
         System.out.print("Customer ID:");
         int customerId = input.nextInt();
         for (int i = 0; i < customers.size(); i++) {
-            CustomerInput customerInput = customers.get(i);
-            if (customerInput.getId() == customerId) {
+            CustomerInput customer = customers.get(i);
+            if (customer.getId() == customerId) {
                 int num = -1;
                 while (num != 5) {
-                    System.out.println("** Customer Info Edit Menu **");
-                    System.out.println(" 1. Edit Id");
-                    System.out.println(" 2. Edit name");
-                    System.out.println(" 3. Edit Email");
-                    System.out.println(" 4. View Phone");
-                    System.out.println(" 5. Exit");
-                    System.out.println("Select one number between 1 - 5:");
+                    showEditMenu();
                     num = input.nextInt();
-
-                    if (num == 1) {
-                        System.out.println("Customer Id");
-                        int id = input.nextInt();
-                        customerInput.setId(id);
-                    } else if (num == 2) {
-                        System.out.println("Customer name");
-                        String name = input.next();
-                        customerInput.setName(name);
-                    } else if (num == 3) {
-                        System.out.println("Email address");
-                        String email = input.next();
-                        customerInput.setEmail(email);
-                    } else if (num == 4) {
-                        System.out.println("Phone number");
-                        String phone = input.next();
-                        customerInput.setPhone(phone);
-                    } else {
-                        continue;
-                    } // if
+                    switch (num) {
+                        case 1:
+                            setCustomerID(customer, input);
+                            break;
+                        case 2:
+                            setCustomerName(customer, input);
+                            break;
+                        case 3:
+                            setCustomerEmail(customer, input);
+                            break;
+                        case 4:
+                            setCustomerPhone(customer, input);
+                            break;
+                        default:
+                            continue;
+                    }
                 } // while
                 break;
             } // if
@@ -114,5 +113,39 @@ public class CustomerManager {
         for (int i = 0; i < customers.size(); i++) {
             customers.get(i).printInfo();
         }
+    }
+
+    public void setCustomerID(CustomerInput customer, Scanner input) {
+        System.out.println("Customer Id");
+        int id = input.nextInt();
+        customer.setId(id);
+    }
+
+    public void setCustomerName(CustomerInput customer, Scanner input) {
+        System.out.println("Customer name");
+        String name = input.next();
+        customer.setName(name);
+    }
+
+    public void setCustomerEmail(CustomerInput customer, Scanner input) {
+        System.out.println("Email address");
+        String email = input.next();
+        customer.setEmail(email);
+    }
+
+    public void setCustomerPhone(CustomerInput customer, Scanner input) {
+        System.out.println("Phone number");
+        String phone = input.next();
+        customer.setPhone(phone);
+    }
+
+    public void showEditMenu() {
+        System.out.println("** Customer Info Edit Menu **");
+        System.out.println(" 1. Edit Id");
+        System.out.println(" 2. Edit name");
+        System.out.println(" 3. Edit Email");
+        System.out.println(" 4. View Phone");
+        System.out.println(" 5. Exit");
+        System.out.println("Select one number between 1 - 5:");
     }
 }
