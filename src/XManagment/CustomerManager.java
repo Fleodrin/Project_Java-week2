@@ -1,6 +1,5 @@
 package XManagment;
 
-import Customer.Customer;
 import Customer.FoodStoreCustomer;
 import Customer.ElectronicStoreCustomer;
 import Customer.DepartmentStoreCustomer;
@@ -89,16 +88,16 @@ public class CustomerManager {
                     num = input.nextInt();
                     switch (num) {
                         case 1:
-                            setCustomerID(customer, input);
+                            customer.setCustomerID(input);
                             break;
                         case 2:
-                            setCustomerName(customer, input);
+                            customer.setCustomerName(input);
                             break;
                         case 3:
-                            setCustomerEmail(customer, input);
+                            customer.setCustomerEmail(input);
                             break;
                         case 4:
-                            setCustomerPhone(customer, input);
+                            customer.setCustomerPhone(input);
                             break;
                         default:
                             continue;
@@ -115,29 +114,7 @@ public class CustomerManager {
         }
     }
 
-    public void setCustomerID(CustomerInput customer, Scanner input) {
-        System.out.println("Customer Id");
-        int id = input.nextInt();
-        customer.setId(id);
-    }
 
-    public void setCustomerName(CustomerInput customer, Scanner input) {
-        System.out.println("Customer name");
-        String name = input.next();
-        customer.setName(name);
-    }
-
-    public void setCustomerEmail(CustomerInput customer, Scanner input) {
-        System.out.println("Email address");
-        String email = input.next();
-        customer.setEmail(email);
-    }
-
-    public void setCustomerPhone(CustomerInput customer, Scanner input) {
-        System.out.println("Phone number");
-        String phone = input.next();
-        customer.setPhone(phone);
-    }
 
     public void showEditMenu() {
         System.out.println("** Customer Info Edit Menu **");

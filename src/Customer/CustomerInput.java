@@ -16,4 +16,12 @@ public interface CustomerInput {
     public void getUserInput(Scanner input);
 
     public void printInfo();
+
+    public void setCustomerID(Scanner input);
+
+    public void setCustomerName(Scanner input);
+
+    public void setCustomerEmail(Scanner input);
+
+    public void setCustomerPhone(Scanner input);
 }
