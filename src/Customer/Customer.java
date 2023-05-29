@@ -1,10 +1,15 @@
 package Customer;
 
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Exception.EmailFormatException;
 
-public abstract class Customer implements CustomerInput {
+public abstract class Customer implements CustomerInput, Serializable {
+    @Serial
+    private static final long serialVersionUID = 3007123713864203242L;
     protected CustomerKind kind = CustomerKind.DepartmentStore;
     protected String name;
     protected int id;

@@ -6,13 +6,17 @@ import Customer.DepartmentStoreCustomer;
 import Customer.CustomerKind;
 import Customer.CustomerInput;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CustomerManager {
+public class CustomerManager implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 3006123713864203242L;
     ArrayList<CustomerInput> customers = new ArrayList<CustomerInput>();
-    Scanner input;
+    transient Scanner input;
 
     CustomerManager(Scanner input) {
         this.input = input;
