@@ -1,4 +1,4 @@
-package log;
+package Log;
 
 public class LoggerTester {
     public static void main(String[] args) {

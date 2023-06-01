@@ -1,6 +1,6 @@
 package XManagment;
 
-import log.EventLogger;
+import Log.EventLogger;
 
 import java.io.*;
 import java.util.InputMismatchException;
