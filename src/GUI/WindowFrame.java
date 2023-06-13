@@ -1,21 +1,25 @@
 package GUI;
 
+import XManagment.CustomerManager;
 import javax.swing.*;
 
 public class WindowFrame extends JFrame {
+    CustomerManager customerManager;
     MenuSelection menuselection;
     CustomerAdder customeradder;
     CustomerViewer customerviewer;
 
-    public WindowFrame() {
-        this.menuselection  = new MenuSelection(this);
-        this.customeradder = new CustomerAdder(this);
-        this.customerviewer = new CustomerViewer(this);
-
+    public WindowFrame(CustomerManager customerManager) {
         this.setSize(500, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("My Frame");
 
-        this.setupPanel(menuselection);
+        this.customerManager = customerManager;
+        menuselection  = new MenuSelection(this);
+        customeradder = new CustomerAdder(this);
+        customerviewer = new CustomerViewer(this, this.customerManager);
+
+        this.add(menuselection);
 
         this.setVisible(true);
     }

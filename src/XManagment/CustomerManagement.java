@@ -1,5 +1,6 @@
 package XManagment;
 
+import GUI.WindowFrame;
 import Log.EventLogger;
 
 import java.io.*;
@@ -17,6 +18,7 @@ public class CustomerManagement {
             customerManager = new CustomerManager(input);
         }
 
+        WindowFrame frame = new WindowFrame(customerManager);
         selectMenu(input, customerManager);
         putObject(customerManager, "customermanager.ser");
     }

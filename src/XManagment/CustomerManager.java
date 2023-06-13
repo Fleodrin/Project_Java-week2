@@ -1,10 +1,6 @@
 package XManagment;
 
-import Customer.FoodStoreCustomer;
-import Customer.ElectronicStoreCustomer;
-import Customer.DepartmentStoreCustomer;
-import Customer.CustomerKind;
-import Customer.CustomerInput;
+import Customer.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -127,6 +123,13 @@ public class CustomerManager implements Serializable {
         }
     }
 
+    public int size() {
+        return customers.size();
+    }
+
+    public CustomerInput get(int index) {
+        return (Customer) customers.get(index);
+    }
 
     public void showEditMenu() {
         System.out.println("** Customer Info Edit Menu **");
