@@ -3,8 +3,13 @@ package GUI;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class CustomerViewer extends JFrame {
-    public CustomerViewer() {
+public class CustomerViewer extends JPanel {
+
+    WindowFrame frame;
+
+    public CustomerViewer(WindowFrame frame) {
+        this.frame = frame;
+
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Id");
         model.addColumn("Name");
@@ -15,8 +20,5 @@ public class CustomerViewer extends JFrame {
         JScrollPane sp = new JScrollPane(table);
 
         this.add(sp);
-        this.setSize(300, 300);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
     }
 }
